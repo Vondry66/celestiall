@@ -4,32 +4,19 @@ import { db } from "./firebase-config";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import "./App.css";
+import { Route,Routes } from "react-router-dom";
+import Photos from "./components/Photos";
 
 function App() {
-  const [profile, setProfile] = useState([]);
-  const profileCollectionRef = collection(db, "Profile");
-  useEffect(() => {
-    const getProfiles = async () => {
-      const data = await getDocs(profileCollectionRef);
-      setProfile(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getProfiles();
-  }, []);
+  
+;
 
   return (
     <div className="App">
       <Header />
-      <ol>
-        {profile.map((prof) => {
-          return (
-            <li>
-              {prof.name}
-              {prof.email}
-            </li>
-          );
-        })}
-      </ol>
       <Home />
+      <Routes><Route path = "/photos" element = {Photos}></Route>
+        </Routes>
     </div>
   );
 }
