@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase-config";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -17,20 +18,29 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <ol>
-        {profile.map((prof) => {
-          return (
-            <li>
-              {prof.name}
-              {prof.email}
-            </li>
-          );
-        })}
-      </ol>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <ol>
+          {profile.map((prof) => {
+            return (
+              <li>
+                {prof.name}
+                {prof.email}
+              </li>
+            );
+          })}
+        </ol>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Home />} />
+          <Route path="/photos" element={<Home />} />
+          <Route path="/skymap" element={<Home />} />
+          <Route path="/news" element={<Home />} />
+        </Routes>
+
+      </div>
+    </BrowserRouter>
   );
 }
 
