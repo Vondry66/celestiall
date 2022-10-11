@@ -1,4 +1,4 @@
-import logo from "/home/hedie/northcoders/celestiall/src/components/logo.png";
+import logo from "./logo.png";
 const Header = () => {
   return (
     <div className="Header">
