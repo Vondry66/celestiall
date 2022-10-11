@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase-config";
-import Header from "./components/Header"; 
+import Header from "./components/Header";
+import Home from "./components/Home";
 import "./App.css";
-
-
-
-
 
 function App() {
   const [profile, setProfile] = useState([]);
@@ -22,17 +19,17 @@ function App() {
   return (
     <div className="App">
       <Header />
-        <ol>
-          {profile.map((prof) => {
-            return (
-              <li>
-                {prof.name}
-                {prof.email}
-              </li>
-            );
-          })}
-        </ol>
-        
+      <ol>
+        {profile.map((prof) => {
+          return (
+            <li>
+              {prof.name}
+              {prof.email}
+            </li>
+          );
+        })}
+      </ol>
+      <Home />
     </div>
   );
 }

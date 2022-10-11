@@ -6,7 +6,7 @@
 .App {
   text-align: center;
   color: black;
-  background-color: black;
+  background-color: rgb(237, 216, 216);
 }
 .user{
   border-radius: 60px;
@@ -47,4 +47,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+.picture{
+  height:300px ;
+  width: 300px;
 }
