@@ -1,7 +1,13 @@
-
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase-config";
+import Header from "./components/Header"; 
+import "./App.css";
+
+
+
+
+
 function App() {
   const [profile, setProfile] = useState([]);
   const profileCollectionRef = collection(db, "Profile");
@@ -15,8 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <button> Create profile </button>
+      <Header />
         <ol>
           {profile.map((prof) => {
             return (
@@ -27,7 +32,6 @@ function App() {
             );
           })}
         </ol>
-      </header>
     </div>
   );
 }
