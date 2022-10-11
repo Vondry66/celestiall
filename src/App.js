@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase-config";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from './firebase-config';
+import Header from './components/Header';
+import Home from './components/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Skymap from './components/Skymap';
 
 function App() {
   const [profile, setProfile] = useState([]);
-  const profileCollectionRef = collection(db, "Profile");
+  const profileCollectionRef = collection(db, 'Profile');
   useEffect(() => {
     const getProfiles = async () => {
       const data = await getDocs(profileCollectionRef);
@@ -35,10 +36,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Home />} />
           <Route path="/photos" element={<Home />} />
-          <Route path="/skymap" element={<Home />} />
+          <Route path="/skymap" element={<Skymap />} />
           <Route path="/news" element={<Home />} />
         </Routes>
-
       </div>
     </BrowserRouter>
   );
