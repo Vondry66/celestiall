@@ -6,7 +6,6 @@ const SearchForTarget = ({searchTarget, setSearchTarget}) => {
         setSearchTarget("")
     }
 
-
     return(
         <section>
             <form onSubmit={handleChange}>
