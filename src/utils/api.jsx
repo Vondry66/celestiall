@@ -9,3 +9,11 @@ export const getPicture =()=>{
         return res.data
     })
 }
+
+const newsApi = axios.create({baseURL:"https://api.spaceflightnewsapi.net/v3/articles",})
+
+export const getNews = ()=>{
+     return newsApi.get().then((res) => {
+       return res.data;
+     });
+}
