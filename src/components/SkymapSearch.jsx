@@ -2,7 +2,7 @@ import React from "react";
 import "./SkymapSearch.css";
 import { useState } from "react";
 
-const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
+const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
 
     const [filteredData, setFilteredData] = useState([]);
 
