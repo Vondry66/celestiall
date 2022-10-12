@@ -20,20 +20,24 @@ const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSearchTarget("")
+        setSearchTarget("Galactic Center")
     }
 
     return (
         <section className="search">
             <form className="searchInput" onSubmit={handleSubmit}>
-                <input type="text" placeholder={placeholder} onChange={handleFilter}/>
+                <input id="target" type="text" placeholder={placeholder} onChange={handleFilter}/>
                 <button>Search</button>
             </form>
             {filteredData.length !== 0 && (
             <div className="dataResult">
-                {filteredData.map((value, key) => {
-                    if (value.name === "") return <p onClick={e => setSearchTarget(value.messier_id)}className="dataItem" >{value.messier_id}</p>
-                    else return <p className="dataItem" onClick={e => setSearchTarget(value.messier_id)}>{value.messier_id}, {value.name}</p>
+                {filteredData.map((value) => {
+                    if (value.name === "") {
+                        return <p className="dataItem" key={value.messier_id} onClick={e => setSearchTarget(value.messier_id)} >{value.messier_id}</p>
+                    }
+                    else {
+                        return <p className="dataItem" key={value.messier_id} onClick={e => setSearchTarget(value.messier_id)}>{value.messier_id}, {value.name}</p>
+                    }
                 })}
             </div>
             )}
