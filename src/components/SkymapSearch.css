@@ -30,6 +30,6 @@
     text-decoration: none;
   }
   
-  p:hover {
+  .dataitem p:hover {
     background-color: lightgrey;
   }
