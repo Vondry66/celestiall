@@ -1,6 +1,7 @@
 import { getPicture } from "../utils/api";
 import { useEffect } from "react";
 import { useState } from "react";
+import Card from 'react-bootstrap/Card';
 const Home = () => {
     const [picture, setPicture] = useState([]);
     useEffect(() => {
@@ -9,12 +10,22 @@ const Home = () => {
             setPicture(pic);
         });
     }, []);
-    return (<section>
-        <h3>Picture of the day</h3>
-        <img className="picture" src={picture.hdurl} alt={picture.title} />
-        <p>{picture.title}</p>
-        <p>{picture.explanation}</p>
-    </section>);
+    return (
+        <>
+
+            <Card >
+                <Card.Img variant="top" src={picture.hdurl} />
+                <Card.Body>
+                    <Card.Title> {picture.title}</Card.Title>
+                    <Card.Text>
+                        {picture.explanation}
+                    </Card.Text>
+
+                </Card.Body>
+            </Card>
+
+        </>
+    );
 };
 
 export default Home;
