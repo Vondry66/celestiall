@@ -21,25 +21,20 @@ const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
     const updateInput = (e) => {
         const input = document.getElementById("target")
         const newInput = {e}
-        console.log(newInput.e)
-        //*[@id="root"]/div/section/div/p/text()[1]
-        //console.log(e.target.__reactFiber$wpxqnq8bahl.alternate.key)
-
-        input.value = e.target.value
-        console.log(input.value)
+        input.value = newInput.e.target.innerHTML
         
     }
-    const handleSubmit = (e) => {
-        console.log(e.target.value)
-        e.preventDefault();
-        setSearchTarget("Galactic Center")
+
+    const clearInput = () => {
+        const input = document.getElementById("target")
+        input.value = "";
     }
 
     return (
         <section className="search">
-            <form className="searchInput" onSubmit={handleSubmit}>
+            <form className="searchInput">
                 <input id="target" type="text" placeholder={placeholder} onChange={handleFilter}/>
-                <button>Search</button>
+                <button onClick={clearInput}>Clear</button>
             </form>
             {filteredData.length !== 0 && (
             <div className="dataResult">
@@ -53,7 +48,7 @@ const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
                         </p>
                     }
                     else {
-                        return <p className="dataItem" key={value.messier_id} onClick={(e) => { 
+                        return <p className="dataItem" key={value.messier_id} onClick={(e) => {
                             setSearchTarget(value.messier_id)
                             updateInput(e)
                         }}>
