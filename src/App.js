@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Photos from "./components/Photos";
 import News from "./components/News";
-
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/photos" element={<Photos />} />
           <Route path="/skymap" element={<Skymap />} />
           <Route path="/news" element={<News />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </div>
     </BrowserRouter>
