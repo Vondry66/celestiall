@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import logo from "./logo.png";
+import { signInWithGoogle } from "../firebase-config";
 function NavBar() {
     return (
         <>
@@ -38,12 +39,15 @@ function NavBar() {
                                 aria-label="Search"
                             />
                             <Button variant="outline-success">Search</Button>
+                            
                         </Form>
+                        
                         <Navbar.Text>
-                            Signed in as: <a href="#login">User</a>
+                        <Button className="user" onClick={signInWithGoogle}>Sign in</Button>
+                            <p>Welcome {localStorage.getItem('name')}</p>
                         </Navbar.Text>
                     </Navbar.Collapse>
-                </Container>
+                    </Container>
             </Navbar>
         </>
     );
