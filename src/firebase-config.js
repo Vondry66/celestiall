@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { getStorage } from "firebase/storage";
-
 const firebaseConfig = {
   apiKey: "AIzaSyBCVeqfwuOd40DwK1z64eHZ200fr3uFyF0",
   authDomain: "celestiall-f4d6d.firebaseapp.com",
@@ -13,5 +13,19 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const storage = getStorage(app);
+export const auth = getAuth(app)
+export const storage = getStorage(app)
 export const db = getFirestore(app);
+const provider = new GoogleAuthProvider()
+
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider).then((result) => {
+    const name = result.user.displayName
+    const profilePic = result.user.photoURL
+
+    localStorage.setItem('name', name)
+    localStorage.setItem('profilePic', profilePic)
+  }).catch((err) => {
+    console.log(err)
+  })
+};

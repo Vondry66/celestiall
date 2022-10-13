@@ -6,7 +6,7 @@ const Home = () => {
     const [picture, setPicture] = useState([]);
     useEffect(() => {
         getPicture().then((pic) => {
-            console.log(pic);
+            
             setPicture(pic);
         });
     }, []);
