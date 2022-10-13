@@ -2,7 +2,7 @@ import React from "react";
 import "./SkymapSearch.css";
 import { useState } from "react";
 
-const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
+const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
 
     const [filteredData, setFilteredData] = useState([]);
 
@@ -49,7 +49,7 @@ const SkymapSearch = ({placeholder, data, searchTarget, setSearchTarget}) => {
                     }
                     else {
                         return <p className="dataItem" key={value.messier_id} onClick={(e) => {
-                            setSearchTarget(value.messier_id)
+                            setSearchTarget(value.name)
                             updateInput(e)
                         }}>
                             {value.messier_id}, {value.name}
