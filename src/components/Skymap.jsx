@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
-import SearchForTarget from "./SearchForTarget";
-import TargetList from "./TargetList";
+import SkymapSearch from "./SkymapSearch";
+import MessierData from "../Messier.json"
 
 const Skymap = () => {
 
-    const [listTarget, setListTarget] = useState("")
-    const [searchTarget, setSearchTarget] = useState("")
+    const [searchTarget, setSearchTarget] = useState("Galactic Center")
 
     useEffect(() => {
-        if(listTarget || searchTarget ){
-            let newTarget = listTarget || searchTarget;
-            const aladin = window.A.aladin('#aladin-lite-div', { survey: 'P/DSS2/color', fov:5, target: `${newTarget}`})
+        if(searchTarget ){
+            window.A.aladin('#aladin-lite-div', { survey: 'P/DSS2/color', fov:5, target: `${searchTarget}`})
         }
-        else if((listTarget === 'None' && searchTarget === "") || (!listTarget && ! searchTarget)){
-            const aladin = window.A.aladin('#aladin-lite-div', { survey: 'P/DSS2/color', fov:60, target: 'trifid'})
+        else if(searchTarget === "" ||  ! searchTarget){
+            window.A.aladin('#aladin-lite-div', { survey: 'P/DSS2/color', fov:60, target: 'galactic center'})
         }
-    }, [listTarget, searchTarget])
+    }, [searchTarget])
 
 
     return (
         <>
-        <TargetList listTarget={listTarget} setListTarget={setListTarget}/>
-        <SearchForTarget searchTarget={searchTarget} setSearchTarget={setSearchTarget}/>
+        <p>
+            Welcome to our Sky Map page! <br />
+            In the search bar below, you can search for deep sky objects from the Messier Catalogue by their Messier number e.g M1, or by their name if they have one. <br />
+            Simply start typing and choose from the list that appears to perform the search and view the target on the sky map. <br/>
+            The clear button will clear your search and return you to the galactic center. <br/>
+            Your current target is displayed above the map.
+        </p>
+        <SkymapSearch placeholder="Enter a target..." data={MessierData} searchTarget={searchTarget} setSearchTarget={setSearchTarget}/>
+        <p>Current target is: {searchTarget}</p>
         <div id='aladin-lite-div' style={{ width: '100%', height: '600px' }} />
         </>
     )
