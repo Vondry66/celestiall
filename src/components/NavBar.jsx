@@ -40,14 +40,16 @@ function NavBar() {
                             />
                             <Button variant="outline-success">Search</Button>
 
+                            
                         </Form>
-
+                        
                         <Navbar.Text>
-                            <Button className="user" onClick={signInWithGoogle}>Sign in</Button>
+                        <Button className="user" onClick={signInWithGoogle}>Sign in</Button>
+
                             <p>Welcome {localStorage.getItem('name')}</p>
                         </Navbar.Text>
                     </Navbar.Collapse>
-                </Container>
+                    </Container>
             </Navbar>
         </>
     );
