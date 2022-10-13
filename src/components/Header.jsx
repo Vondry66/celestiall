@@ -1,5 +1,4 @@
 import logo from "./logo.png";
-import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./NavBar";
 import { signInWithGoogle } from "../firebase-config";
@@ -13,6 +12,7 @@ const Header = () => {
         <p>Welcome {localStorage.getItem('name')}</p>
         <NavBar />
       </header>
+      <NavBar />
     </div>
   );
 };
