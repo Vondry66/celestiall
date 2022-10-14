@@ -19,7 +19,19 @@ export const getNews = () => {
 };
 export const getIndividualNews = (id) => {
     return newsApi.get(`/${id}`).then((res) => {
-        console.log(res.data);
         return res.data;
     });
 };
+
+const eventsApi = axios.create({
+  baseURL: "https://ll.thespacedevs.com/2.2.0/event/?format=json",
+});
+
+
+
+export const getEvents = ()=>{
+    return eventsApi.get().then((res)=>{
+        return res.data;
+
+    })
+}

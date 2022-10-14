@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Photos from "./components/Photos";
 import News from "./components/News";
 import Chat from "./components/Chat";
+import Events from "./components/Events"
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Home />} />
+          <Route path="/events" element={< Events/>} />
           <Route path="/photos" element={<Photos />} />
           <Route path="/skymap" element={<Skymap />} />
           <Route path="/news" element={<News />} />
