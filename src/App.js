@@ -5,17 +5,23 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Photos from "./components/Photos";
 import News from "./components/News";
+import { AuthContextProvider } from "./contexts/AuthContext";
+import SignIn from "./components/SignIn";
 import Chat from "./components/Chat";
 import Events from "./components/Events"
 
+
 function App() {
   return (
+    <AuthContextProvider>
     <BrowserRouter>
       <div className="App">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/events" element={< Events/>} />
+          <Route path="/signin" element={<SignIn />}/>
           <Route path="/photos" element={<Photos />} />
           <Route path="/skymap" element={<Skymap />} />
           <Route path="/news" element={<News />} />
@@ -23,6 +29,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

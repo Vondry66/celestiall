@@ -4,8 +4,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import logo from "./logo.png";
-import { signInWithGoogle } from "../firebase-config";
+import { Link } from 'react-router-dom'
+import {UserAuth} from '../contexts/AuthContext'
+
+
 function NavBar() {
+    const {user, logOut} = UserAuth()
+
+    const handleSignOut = async () => {
+        try {
+            await logOut()
+        }catch(error) {
+            console.log(error)
+        }
+    }
+    
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -18,7 +31,7 @@ function NavBar() {
                             height="40"
                             className="d-inline-block align-top"
                         />{' '}
-                        Celestiall
+                        CelestiALL
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -45,9 +58,10 @@ function NavBar() {
                         </Form>
                         
                         <Navbar.Text>
-                        <Button className="user" onClick={signInWithGoogle}>Sign in</Button>
-
-                            <p>Welcome {localStorage.getItem('name')}</p>
+                            {user?.displayName ? <Button onClick={handleSignOut}>Log Out?</Button> : <Link to={'/signin'}><Button className="user" >Sign in</Button></Link>}
+                            <div>
+                            <p>Welcome {user?.displayName} </p>
+                            </div>
                         </Navbar.Text>
                     </Navbar.Collapse>
                     </Container>

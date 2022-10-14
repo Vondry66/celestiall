@@ -1,11 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
-
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
-
-
-
+import { getAuth } from 'firebase/auth'
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -22,19 +17,3 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
-const provider = new GoogleAuthProvider();
-
-export const signInWithGoogle = () => {
-
-  signInWithPopup(auth, provider).then((result) => {
-    const name = result.user.displayName;
-    const profilePic = result.user.photoURL;
-
-    localStorage.setItem('name', name);
-    localStorage.setItem('profilePic', profilePic);
-  }).catch((err) => {
-    console.log(err);
-  });
-
-};
-
