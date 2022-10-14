@@ -1,53 +1,47 @@
-import React from "react";
-import { useState } from "react";
-import {collection,addDoc,doc,deleteDoc, serverTimestamp,onSnapshot,query,orderBy} from "firebase/firestore"
-import { db } from "../firebase-config";
-import {UserAuth} from "../contexts/AuthContext"
+import React, { useState, useEffect, useRef } from 'react';
+import Message from './Message';
+import SendMessage from './SendMessage';
+import { db } from '../firebase-config';
+import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
+import { UserAuth } from '../contexts/AuthContext';
+import  Container  from 'react-bootstrap/Container';
+import  Card  from 'react-bootstrap/Card';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 
-function Chat(){
-    const{user}=UserAuth()
-    console.log(user)
-const[newMessage,setNewMessage] = useState("")
-const[messages,setMessages]=useState([])
+const Chat = () => {
+  const [messages, setMessages] = useState([]);
+  const scroll = useRef();
+  const {user}=UserAuth()
 
-const messagesCollRef=collection(db,"messages")
-const SendMessage = async ()=>{
-    await addDoc(messagesCollRef, {text: newMessage,
-    createdAt: serverTimestamp()})
-}
-const DeleteMessage = async (id, text)=>{
-    const messageDoc = doc(db, "messages",id)
-    await deleteDoc(messageDoc)
-}
+  useEffect(() => {
+    const q = query(collection(db, 'messages'), orderBy('timestamp'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let messages = [];
+      querySnapshot.forEach((doc) => {
+        messages.push({ ...doc.data(), id: doc.id });
+      });
+      setMessages(messages);
+    });
+    return () => unsubscribe();
+  }, []);
 
-const clearMessage =()=>{
-    const input= document.getElementById("target")
-    input.value=""
-}
+  return (
+    <div>
+        <Container>
+      <Card style={{ width: '58rem', display: 'inline-block'}} sm={2}>
+        {messages &&
+          messages.map((message) => (
+            <Message key={message.id} message={message} />
+          ))}
+     
+      
+      <SendMessage scroll={scroll} />
+      <span ref={scroll}></span>
+      </Card>
+      </Container>
+    </div>
+  );
+};
 
-const q = query(messagesCollRef, orderBy('createdAt'))
-onSnapshot(q, (snapshot)=>{
- setMessages(snapshot.docs.map((doc)=>({...doc.data(),id:doc.id})))
-})
-    return( 
-        <div>
-            {messages.map(({id,text,createdAt})=>(
-                <div key={id}>
-                    <p>{user?.displayName}</p>
-                    <p>{text}</p>
-                   
-                    <button onClick={()=>{DeleteMessage(id)}}>Delete</button>
-                    
-                    
-                </div>
-            ))}
-             <input id="target" className="message-input" placeholder="Type your message here..." type="text" onChange={(e)=>{setNewMessage(e.target.value)}}/>
-    <button className="send-message" onClick={SendMessage}>Send Message1</button>
-    
-            
-        </div>
-        
-    )
-}
-
-export default Chat
+export default Chat;
