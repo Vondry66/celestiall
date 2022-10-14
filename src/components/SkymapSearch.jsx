@@ -1,6 +1,7 @@
 import React from "react";
 import "./SkymapSearch.css";
-import { useState } from "react";
+import { useState} from "react";
+
 
 const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
 
@@ -22,22 +23,23 @@ const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
         const input = document.getElementById("target")
         const newInput = {e}
         input.value = newInput.e.target.innerHTML
+        setFilteredData([])
         
     }
 
     const clearInput = () => {
         const input = document.getElementById("target")
-        input.value = "";
+        input.value = ""
     }
 
     return (
         <section className="search">
-            <form className="searchInput">
+            <section className="searchInput">
                 <input id="target" type="text" placeholder={placeholder} onChange={handleFilter}/>
                 <button onClick={clearInput}>Clear</button>
-            </form>
+            </section>
             {filteredData.length !== 0 && (
-            <div className="dataResult">
+            <div className="dataResult" >
                 {filteredData.map((value) => {
                     if (value.name === "") {
                         return <p className="dataItem" key={value.messier_id} onClick={(e) =>{ 
@@ -55,7 +57,7 @@ const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
                             {value.messier_id}, {value.name}
                         </p>
                     }
-                })}
+                })}   
             </div>
             )}
         </section>

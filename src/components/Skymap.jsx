@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import SkymapSearch from "./SkymapSearch";
-import MessierData from "../Messier.json"
+import MessierData from "../Messier.json";
+import Container from "react-bootstrap/Container";
+import  Card  from "react-bootstrap/Card";
+import HowToUse from "./HowToUse";
 
 const Skymap = () => {
 
@@ -18,16 +21,15 @@ const Skymap = () => {
 
     return (
         <>
-        <p>
-            Welcome to our Sky Map page! <br />
-            In the search bar below, you can search for deep sky objects from the Messier Catalogue by their Messier number e.g M1, or by their name if they have one. <br />
-            Simply start typing and choose from the list that appears to perform the search and view the target on the sky map. <br/>
-            The clear button will clear your search and return you to the galactic center. <br/>
-            Your current target is displayed above the map.
-        </p>
-        <SkymapSearch placeholder="Enter a target..." data={MessierData} searchTarget={searchTarget} setSearchTarget={setSearchTarget}/>
-        <p>Current target is: {searchTarget}</p>
-        <div id='aladin-lite-div' style={{ width: '100%', height: '600px' }} />
+        <Container className="p-4">
+            <Card>
+                <Card.Title > Welcome to our Sky Map page!</Card.Title> <br />
+                    <HowToUse />
+                <SkymapSearch placeholder="Enter a target..." data={MessierData} searchTarget={searchTarget} setSearchTarget={setSearchTarget}/>
+                <p style={{textAlign: "left", padding: "5px"}}>Current target is: {searchTarget}</p>
+            </Card>
+            <div id='aladin-lite-div' style={{ width: '100%', height: '600px' }} />
+        </Container>
         </>
     )
 }
