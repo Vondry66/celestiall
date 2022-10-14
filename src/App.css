@@ -6,7 +6,7 @@
 .App {
   text-align: center;
   color: black;
-  background-color: rgb(237, 216, 216);
+  background-color: #282c34;
 }
 .articleimg{
   width: 300px;
@@ -17,20 +17,34 @@
 
 }
 
+.inpt{
+  font: bold;
+  height: 45px;
+  border-radius: 25px;
+  box-shadow: 10px;
+}
 
-
-
+.person{
+  text-shadow: #282c34;
+ 
+ 
+  
+  border-radius: 25px;
+}
+.person span {
+  background-color: rgb(110, 110, 211);
+}
 
 .bg{
-  background-color: rgb(237, 216, 216);
+  background-color: rgb(255, 255, 255);
 }
 .user{
   border-radius: 60px;
   height: 80px;
   width: 80px ;
-}
+} 
 
-/* .App-logo {
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -39,7 +53,7 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-} */
+} 
 
 .App-header {
   background-color: #282c34;
@@ -49,7 +63,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-link {
@@ -68,3 +82,4 @@
   height:300px ;
   width: 300px;
 }
+ 
