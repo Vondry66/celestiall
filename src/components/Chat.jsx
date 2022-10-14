@@ -42,7 +42,7 @@ onSnapshot(q, (snapshot)=>{
                 </div>
             ))}
              <input id="target" className="message-input" placeholder="Type your message here..." type="text" onChange={(e)=>{setNewMessage(e.target.value)}}/>
-    <button className="send-message" onClick={SendMessage}>Send Message</button>
+    <button className="send-message" onClick={SendMessage}>Send Message1</button>
     
             
         </div>
