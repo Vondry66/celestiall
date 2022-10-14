@@ -28,18 +28,18 @@ const SkymapSearch = ({placeholder, data, setSearchTarget}) => {
     }
 
     const clearInput = () => {
-        
+        const input = document.getElementById("target")
+        input.value = ""
     }
 
     return (
         <section className="search">
-            <form className="searchInput">
+            <section className="searchInput">
                 <input id="target" type="text" placeholder={placeholder} onChange={handleFilter}/>
                 <button onClick={clearInput}>Clear</button>
-            </form>
+            </section>
             {filteredData.length !== 0 && (
             <div className="dataResult" >
-
                 {filteredData.map((value) => {
                     if (value.name === "") {
                         return <p className="dataItem" key={value.messier_id} onClick={(e) =>{ 
