@@ -2,8 +2,11 @@ import React from "react";
 import { useState } from "react";
 import {collection,addDoc,doc,deleteDoc, serverTimestamp,onSnapshot,query,orderBy} from "firebase/firestore"
 import { db } from "../firebase-config";
+import {UserAuth} from "../contexts/AuthContext"
 
 function Chat(){
+    const{user}=UserAuth()
+    console.log(user)
 const[newMessage,setNewMessage] = useState("")
 const[messages,setMessages]=useState([])
 const messagesCollRef=collection(db,"messages")
@@ -24,6 +27,7 @@ onSnapshot(q, (snapshot)=>{
         <div>
             {messages.map(({id,text,createdAt})=>(
                 <div key={id}>
+                    <p>{user?.displayName}</p>
                     <p>{text}</p>
                    
                     <button onClick={()=>{DeleteMessage(id)}}>Delete</button>
