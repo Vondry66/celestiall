@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Photos from "./components/Photos";
 import News from "./components/News";
 import Chat from "./components/Chat";
+
 function App() {
   return (
     <BrowserRouter>
