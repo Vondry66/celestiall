@@ -9,6 +9,7 @@ function Chat(){
     console.log(user)
 const[newMessage,setNewMessage] = useState("")
 const[messages,setMessages]=useState([])
+
 const messagesCollRef=collection(db,"messages")
 const SendMessage = async ()=>{
     await addDoc(messagesCollRef, {text: newMessage,
@@ -17,6 +18,11 @@ const SendMessage = async ()=>{
 const DeleteMessage = async (id, text)=>{
     const messageDoc = doc(db, "messages",id)
     await deleteDoc(messageDoc)
+}
+
+const clearMessage =()=>{
+    const input= document.getElementById("target")
+    input.value=""
 }
 
 const q = query(messagesCollRef, orderBy('createdAt'))
@@ -35,7 +41,7 @@ onSnapshot(q, (snapshot)=>{
                     
                 </div>
             ))}
-             <input className="message-input" placeholder="Type your message here..." type="text" onChange={(e)=>{setNewMessage(e.target.value)}}/>
+             <input id="target" className="message-input" placeholder="Type your message here..." type="text" onChange={(e)=>{setNewMessage(e.target.value)}}/>
     <button className="send-message" onClick={SendMessage}>Send Message</button>
     
             
