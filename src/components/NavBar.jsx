@@ -43,6 +43,7 @@ function NavBar() {
                             <Nav.Link href="/photos">Photos</Nav.Link>
                             <Nav.Link href="/skymap">Sky Map</Nav.Link>
                             <Nav.Link href="/news">News</Nav.Link>
+                            <Nav.Link href="/chat">Chat</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control
@@ -52,6 +53,7 @@ function NavBar() {
                                 aria-label="Search"
                             />
                             <Button variant="outline-success">Search</Button>
+
                             
                         </Form>
                         

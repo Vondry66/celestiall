@@ -7,6 +7,7 @@ import Photos from "./components/Photos";
 import News from "./components/News";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import SignIn from "./components/SignIn";
+import Chat from "./components/Chat";
 
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />}/>
@@ -23,6 +23,7 @@ function App() {
           <Route path="/photos" element={<Photos />} />
           <Route path="/skymap" element={<Skymap />} />
           <Route path="/news" element={<News />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </div>
     </BrowserRouter>
