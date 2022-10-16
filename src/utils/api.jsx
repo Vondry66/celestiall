@@ -24,14 +24,16 @@ export const getIndividualNews = (id) => {
 };
 
 const eventsApi = axios.create({
-  baseURL: "https://ll.thespacedevs.com/2.2.0/event/?format=json",
+    baseURL: "https://ll.thespacedevs.com/2.2.0",
 });
 
-
-
-export const getEvents = ()=>{
-    return eventsApi.get().then((res)=>{
+export const getEvents = () => {
+    return eventsApi.get("/event/?format=json").then((res) => {
         return res.data;
-
-    })
-}
+    });
+};
+export const getEvent = (id) => {
+    return eventsApi.get(`/event/${id}/?format=json`).then((res) => {
+        return res.data;
+    });
+};
