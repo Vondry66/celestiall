@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { db } from "../firebase-config";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
 
 function PostEvent() {
@@ -22,6 +22,12 @@ function PostEvent() {
         setNewLocation('');
         setNewEventLink('');
     };
+    const colRef = collection(db, "postEvents");
+    getDocs(colRef)
+        .then((snapshot) => {
+            console.log(snapshot);
+
+        });
 
     return (
         <div>
