@@ -41,7 +41,7 @@ const Events = () => {
                                     <td>{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
                                     <td>{event.name}</td>
                                     <td>{event.location}</td>
-                                    <td><Button><Link to={`/events/${event.id}`}>View Event
+                                    <td><Button variant="outline-primary"><Link to={`/events/${event.id}`}>View Event
                                     </Link></Button></td>
                                 </tr>
                             </tbody>
