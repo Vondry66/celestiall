@@ -27,7 +27,6 @@ function PostEvent() {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const newlyPostedEvent = [];
         querySnapshot.forEach((doc) => {
-            console.log(doc.data());
             newlyPostedEvent.push(doc.data());
         });
         setEventList(newlyPostedEvent);
@@ -50,16 +49,15 @@ function PostEvent() {
                 <button type="submit">Post Event</button>
             </form>
 
-            <div>
+            <div className="event_body">
                 {eventList.map((event) => {
                     return (
-                        <ol>
-                            <li key={event.id}>
 
-                                {event.date}
-                            </li>
+                        <li key={event.id}>
 
-                        </ol>
+                            {event.Description}
+                        </li>
+
                     );
                 })}
             </div>
