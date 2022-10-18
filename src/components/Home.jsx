@@ -37,7 +37,7 @@ const Home = () => {
                 </Row>
             </Card>
 
-            <Card p-4> <PhotoCarousel /></Card>
+            <Card > <PhotoCarousel /></Card>
         </>
     );
 };
