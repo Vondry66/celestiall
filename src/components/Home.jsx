@@ -16,7 +16,8 @@ const Home = () => {
     }, []);
     return (
         <>
-            <Card >
+        <Card className="bg-black" > <PhotoCarousel /></Card>
+            <Card className="bg-black" >
                 <Row>
                     <Col className="p-5">
                         <Ratio aspectRatio={3 / 4}>
@@ -28,8 +29,8 @@ const Home = () => {
                     </Col>
                     <Col >
                         <Card.Body>
-                            <Card.Title className="p-4 mt-4"> {picture.title}</Card.Title>
-                            <Card.Text className="p-4" >
+                            <Card.Title className="text-white p-4 mt-4"> {picture.title}</Card.Title>
+                            <Card.Text className="p-4 text-white" >
                                 {picture.explanation}
                             </Card.Text>
                         </Card.Body>
@@ -37,7 +38,6 @@ const Home = () => {
                 </Row>
             </Card>
 
-            <Card > <PhotoCarousel /></Card>
         </>
     );
 };
