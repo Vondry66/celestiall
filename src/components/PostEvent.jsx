@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { db } from "../firebase-config";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, query, collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 
 
 function PostEvent() {
@@ -8,6 +8,7 @@ function PostEvent() {
     const [newDescription, setNewDescription] = useState([]);
     const [newLocation, setNewLocation] = useState([]);
     const [newEventLink, setNewEventLink] = useState([]);
+    const [eventList, setEventList] = useState([]);
 
     const uploadEvent = async (e) => {
         e.preventDefault();
@@ -22,30 +23,46 @@ function PostEvent() {
         setNewLocation('');
         setNewEventLink('');
     };
-    const colRef = collection(db, "postEvents");
-    getDocs(colRef)
-        .then((snapshot) => {
-            console.log(snapshot);
-
+    const q = query(collection(db, "postEvents"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const newlyPostedEvent = [];
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+            newlyPostedEvent.push(doc.data());
         });
-
+        setEventList(newlyPostedEvent);
+    });
     return (
         <div>
             <form onSubmit={uploadEvent} >
                 <label htmlFor="date"> Date</label>
-                <input onChange={(e) => setNewDate(e.target.value)} value={newDate} name='date'>
+                <input onChange={(e) => setNewDate(e.target.value)} value={newDate} name='date' placeholder="Date">
                 </input>
                 <label htmlFor="description"> Description</label>
-                <input onChange={(e) => setNewDescription(e.target.value)} value={newDescription} name='description'>
+                <input onChange={(e) => setNewDescription(e.target.value)} value={newDescription} name='description' placeholder="Description">
                 </input>
                 <label htmlFor="location"> Location</label>
-                <input onChange={(e) => setNewLocation(e.target.value)} value={newLocation} name='location'>
+                <input onChange={(e) => setNewLocation(e.target.value)} value={newLocation} name='location' placeholder="Location">
                 </input>
                 <label htmlFor="eventLink"> Event Link</label>
-                <input onChange={(e) => setNewEventLink(e.target.value)} value={newEventLink} name='eventLink'>
+                <input onChange={(e) => setNewEventLink(e.target.value)} value={newEventLink} name='eventLink' placeholder="Event Link">
                 </input>
                 <button type="submit">Post Event</button>
             </form>
+
+            <div>
+                {eventList.map((event) => {
+                    return (
+                        <ol>
+                            <li key={event.id}>
+
+                                {event.date}
+                            </li>
+
+                        </ol>
+                    );
+                })}
+            </div>
         </div>
     );
 

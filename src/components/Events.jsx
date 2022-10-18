@@ -23,8 +23,8 @@ const Events = () => {
     }, []);
     return (
         <>
-            <Table striped responsive>
-                <PostEvent />
+            <PostEvent />
+            <Table style={{ color: "white" }} striped responsive>
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -36,8 +36,8 @@ const Events = () => {
                 {
                     events.map((event) => {
                         return (
-                            <tbody>
-                                <tr key={event.id}>
+                            <tbody style={{ color: "white" }} >
+                                <tr style={{ color: "white" }} key={event.id}>
                                     <td>{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
                                     <td>{event.name}</td>
                                     <td>{event.location}</td>
