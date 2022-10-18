@@ -9,16 +9,9 @@ import Button from 'react-bootstrap/Button';
 // import {collection,addDoc,doc,deleteDoc,serverTimestamp,onSnapshot,query,orderBy,} from "firebase/firestore";
 // import { db } from "../firebase-config";
 import { getEvents } from "../utils/api";
+import PostEvent from "./PostEvent";
 
 
-
-// function live(){
-//     const[newlive,setNewLive] = useState("")
-//     const[live,setLive] = useState([])
-//     const liveCollRef = collection(db,"live")
-//     const startLive = async()=>{}
-
-// }
 
 const Events = () => {
     const [events, setEvents] = useState([]);
@@ -29,31 +22,34 @@ const Events = () => {
         });
     }, []);
     return (
-        <Table striped responsive>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Event</th>
-                    <th>Location</th>
-                    <th>Event Link</th>
-                </tr>
-            </thead>
-            {
-                events.map((event) => {
-                    return (
-                        <tbody>
-                            <tr key={event.id}>
-                                <td>{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
-                                <td>{event.name}</td>
-                                <td>{event.location}</td>
-                                <td><Button><Link to={`/events/${event.id}`}>View Event
-                                </Link></Button></td>
-                            </tr>
-                        </tbody>
-                    );
-                })
-            }
-        </Table>
+        <>
+            <Table striped responsive>
+                <PostEvent />
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                        <th>Event Link</th>
+                    </tr>
+                </thead>
+                {
+                    events.map((event) => {
+                        return (
+                            <tbody>
+                                <tr key={event.id}>
+                                    <td>{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
+                                    <td>{event.name}</td>
+                                    <td>{event.location}</td>
+                                    <td><Button variant="outline-primary"><Link to={`/events/${event.id}`}>View Event
+                                    </Link></Button></td>
+                                </tr>
+                            </tbody>
+                        );
+                    })
+                }
+            </Table>
+        </>
     );
 };
 export default Events;

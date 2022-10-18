@@ -1,70 +1,57 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import logo from "./logo.png";
-import { Link } from 'react-router-dom'
-import {UserAuth} from '../contexts/AuthContext'
+import { Link } from 'react-router-dom';
+import { UserAuth } from '../contexts/AuthContext';
 
 
 function NavBar() {
-    const {user, logOut} = UserAuth()
+    const { user, logOut } = UserAuth();
 
     const handleSignOut = async () => {
         try {
-            await logOut()
-        }catch(error) {
-            console.log(error)
+            await logOut();
+        } catch (error) {
+            console.log(error);
         }
-    }
-    
+    };
+
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" className='navbar'>
                 <Container>
                     <Navbar.Brand href="/">
                         <img
                             alt=""
                             src={logo}
-                            width="40"
-                            height="40"
+                            width="auto"
+                            height="100%"
                             className="d-inline-block align-top"
-                        />{' '}
-                        CelestiALL
+                        />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
 
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/events">Events</Nav.Link>
-                            <Nav.Link href="/photos">Photos</Nav.Link>
-                            <Nav.Link href="/skymap">Sky Map</Nav.Link>
-                            <Nav.Link href="/news">News</Nav.Link>
-                            <Nav.Link href="/chat">Chat</Nav.Link>
+                            <Nav.Link className='nav-link' href="/">Home</Nav.Link>
+                            <Nav.Link className='nav-link' href="/events">Events</Nav.Link>
+                            <Nav.Link className='nav-link' href="/photos">Photos</Nav.Link>
+                            <Nav.Link className='nav-link' href="/skymap">Sky Map</Nav.Link>
+                            <Nav.Link className='nav-link' href="/news">News</Nav.Link>
+                            <Nav.Link className='nav-link' href="/chat">Chat</Nav.Link>
                         </Nav>
-                        <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
 
-                            
-                        </Form>
-                        
-                        <Navbar.Text>
-                            {user?.displayName ? <Button onClick={handleSignOut}>Log Out?</Button> : <Link to={'/signin'}><Button className="user" >Sign in</Button></Link>}
+                        <Navbar.Text className='nav-link'>
+                            {user?.displayName ? <Button variant='outline-light' onClick={handleSignOut}>Log Out</Button> : <Link to={'/signin'}><Button className="user" variant='outline-light' >Log in</Button></Link>}
                             <div>
-                            <p>Welcome {user?.displayName} </p>
+                                <p id='welcome'>Welcome {user?.displayName} </p>
                             </div>
                         </Navbar.Text>
                     </Navbar.Collapse>
-                    </Container>
+                </Container>
             </Navbar>
         </>
     );
