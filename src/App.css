@@ -25,15 +25,18 @@
 }
 .right-msg{
   
+  
   margin: 5px;
+ 
 position: relative;
 text-align: right;
 font-size: 16px;
 font-weight: bold;
 float: right;
-right: 20px;
+right: 50px;
 }
 .left-msg{
+  
   text-shadow: 3px #08523d;
   top: 10px;
   position: relative;
@@ -42,9 +45,8 @@ right: 20px;
   box-sizing: 5px;
   text-align: left;
   padding: 6px 6px;
-  left:20px;
-  border: 5px;
-  box-shadow: 3px #065f46;
+  left:50px;
+  
 }
 .chat-container{
   
@@ -52,10 +54,11 @@ right: 20px;
 }
 
 .left {
+  font-family: 'Orbitron', sans-serif;
   position: relative;
-  background: #0a6783;
+  background: #0ea5e9;
   text-align: left;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   min-width: 25%;
   padding: 10px 15px;
   border-radius: 25px;
@@ -89,10 +92,11 @@ right: 20px;
 }
 
 .right {
+  font-family: 'Orbitron', sans-serif;
   position: relative;
-  background: #08523d;
+  background: #22c55e;
   text-align: right;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   min-width: 25%;
   padding: 10px 15px;
   border-radius: 25px;
