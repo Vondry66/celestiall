@@ -3,16 +3,17 @@ import Message from './Message';
 import SendMessage from './SendMessage';
 import { db } from '../firebase-config';
 import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
-import { UserAuth } from '../contexts/AuthContext';
+
 import  Container  from 'react-bootstrap/Container';
 import  Card  from 'react-bootstrap/Card';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
+
+
+
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
-  const {user}=UserAuth()
+  
 
   useEffect(() => {
     const q = query(collection(db, 'messages'), orderBy('timestamp'));
@@ -26,10 +27,13 @@ const Chat = () => {
     return () => unsubscribe();
   }, []);
 
+
+
   return (
     <div>
         <Container>
-      <Card style={{ width: '58rem', display: 'inline-block'}} sm={2}>
+      <Card className='chat-container' style={{ width: '58rem', display: 'inline-block' }} sm={4}>
+      
         {messages &&
           messages.map((message) => (
             <Message key={message.id} message={message} />
@@ -43,5 +47,7 @@ const Chat = () => {
     </div>
   );
 };
+
+
 
 export default Chat;
