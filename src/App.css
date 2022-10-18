@@ -16,24 +16,142 @@
 
 
 }
+.secondperson{
+  text-shadow: #282c34;
+  float: left;
+  display: block;
+  position: relative;
+ padding: 8px 15px;
+ margin: 0 20px 10px 0;
+ border-radius: 4px;
+ -webkit-box-shadow: 0 px 5px 0 rgb(0, 0, 0);
+box-shadow: 0 12px 4px 0 rgba(0, 0, 0, 0.801);
+  
+  background-color: rgb(22, 192, 169);
+  border-radius: 25px;
 
+}
+.secondMessage{
+  padding-right: 850px;
+}
+.message{
+  padding-left: 820px;
+  padding-top: 60px;
+
+}
 .inpt{
   font: bold;
   height: 45px;
   border-radius: 25px;
   box-shadow: 10px;
 }
+.right-msg{
+  margin: 20px 20px 20px 20px;
+position: relative;
+text-align: right;
+
+float: right;
+right: 20px;
+}
+.left-msg{
+  top: 10px;
+  position: relative;
+  float: left;
+  text-align: left;
+  padding: 6px 6px;
+  left:20px;
+  border: 5px;
+}
+.chat-container{
+  background-color: #d0d9e7;
+  text-decoration-color: aliceblue;
+}
+
+.left {
+  position: relative;
+  background: #0a6783;
+  text-align: left;
+  min-width: 25%;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid rgb(122, 116, 116);
+  float: left;
+  left: 20px;
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: -1px;
+  left: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #ccc;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  left: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid #155e75;
+  clear: both;
+  
+  
+}
+
+.right {
+  position: relative;
+  background: #08523d;
+  text-align: right;
+  min-width: 25%;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid rgb(122, 116, 116);
+  float: right;
+  right: 20px;
+}
+
+.right::before {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: -1px;
+  right: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #ccc;
+}
+
+.right::after {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  right: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid #065f46;
+  clear: both;
+  
+  
+}
 
 .person{
   text-shadow: #282c34;
- 
- 
+  float: right;
+  display: block;
+  position: relative;
+ padding: 8px 15px;
+ margin: 0 20px 10px 0;
+ border-radius: 4px;
+ -webkit-box-shadow: 0 px 5px 0 rgb(0, 0, 0);
+box-shadow: 0 12px 4px 0 rgba(0, 0, 0, 0.801);
   
+  background-color: rgb(150, 206, 142);
   border-radius: 25px;
 }
-.person span {
-  background-color: rgb(110, 110, 211);
-}
+
 
 .bg{
   background-color: rgb(255, 255, 255);
@@ -83,3 +201,4 @@
   width: 300px;
 }
  
+
