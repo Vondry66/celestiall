@@ -192,3 +192,17 @@ right: 50px;
   padding: 20px;
 }
 
+.carou-cont {
+  width: 800px;
+}
+
+.carou-item {
+  height: 400px;
+}
+.carou-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 400px;
+  width: 800px;
+}

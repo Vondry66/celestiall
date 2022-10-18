@@ -17,7 +17,7 @@ const HowToUse = () => {
 return(
     <div>
         <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-            <Button variant="dark" className="mb-1">Read Me!</Button>
+            <Button variant="dark" className="mb-1">How to use</Button>
         </OverlayTrigger>
   </div>
 )

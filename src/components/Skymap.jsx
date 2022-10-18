@@ -22,11 +22,11 @@ const Skymap = () => {
     return (
         <>
         <Container className="p-4">
-            <Card>
-                <Card.Title > Welcome to our Sky Map page!</Card.Title> <br />
+            <Card className="bg-black">
+                <Card.Title className="text-white"> Interactive Sky Map</Card.Title> <br />
                     <HowToUse />
                 <SkymapSearch placeholder="Enter a target..." data={MessierData} searchTarget={searchTarget} setSearchTarget={setSearchTarget}/>
-                <p style={{textAlign: "left", padding: "5px"}}>Current target is: {searchTarget}</p>
+                <p style={{color: "white", textAlign: "left", padding: "5px"}}>Current target is: {searchTarget}</p>
             </Card>
             <div id='aladin-lite-div' style={{ width: '100%', height: '600px' }} />
         </Container>
