@@ -16,29 +16,7 @@
 
 
 }
-.secondperson{
-  text-shadow: #282c34;
-  float: left;
-  display: block;
-  position: relative;
- padding: 8px 15px;
- margin: 0 20px 10px 0;
- border-radius: 4px;
- -webkit-box-shadow: 0 px 5px 0 rgb(0, 0, 0);
-box-shadow: 0 12px 4px 0 rgba(0, 0, 0, 0.801);
-  
-  background-color: rgb(22, 192, 169);
-  border-radius: 25px;
 
-}
-.secondMessage{
-  padding-right: 850px;
-}
-.message{
-  padding-left: 820px;
-  padding-top: 60px;
-
-}
 .inpt{
   font: bold;
   height: 45px;
@@ -46,24 +24,30 @@ box-shadow: 0 12px 4px 0 rgba(0, 0, 0, 0.801);
   box-shadow: 10px;
 }
 .right-msg{
-  margin: 20px 20px 20px 20px;
+  
+  margin: 5px;
 position: relative;
 text-align: right;
-
+font-size: 16px;
+font-weight: bold;
 float: right;
 right: 20px;
 }
 .left-msg{
+  text-shadow: 3px #08523d;
   top: 10px;
   position: relative;
   float: left;
+  font-weight: bold;
+  box-sizing: 5px;
   text-align: left;
   padding: 6px 6px;
   left:20px;
   border: 5px;
+  box-shadow: 3px #065f46;
 }
 .chat-container{
-  background-color: #d0d9e7;
+  
   text-decoration-color: aliceblue;
 }
 
@@ -71,12 +55,14 @@ right: 20px;
   position: relative;
   background: #0a6783;
   text-align: left;
+  color: aliceblue;
   min-width: 25%;
   padding: 10px 15px;
   border-radius: 25px;
   border: 2px solid rgb(122, 116, 116);
   float: left;
   left: 20px;
+  box-shadow: 3px 6px #282c34;
 }
 
 .left::before {
@@ -106,12 +92,14 @@ right: 20px;
   position: relative;
   background: #08523d;
   text-align: right;
+  color: aliceblue;
   min-width: 25%;
   padding: 10px 15px;
   border-radius: 25px;
   border: 2px solid rgb(122, 116, 116);
   float: right;
   right: 20px;
+  box-shadow: 3px 6px #282c34;
 }
 
 .right::before {
@@ -137,20 +125,7 @@ right: 20px;
   
 }
 
-.person{
-  text-shadow: #282c34;
-  float: right;
-  display: block;
-  position: relative;
- padding: 8px 15px;
- margin: 0 20px 10px 0;
- border-radius: 4px;
- -webkit-box-shadow: 0 px 5px 0 rgb(0, 0, 0);
-box-shadow: 0 12px 4px 0 rgba(0, 0, 0, 0.801);
-  
-  background-color: rgb(150, 206, 142);
-  border-radius: 25px;
-}
+
 
 
 .bg{
