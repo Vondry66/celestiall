@@ -13,10 +13,10 @@ function PostEvent() {
     const uploadEvent = async (e) => {
         e.preventDefault();
         await addDoc(collection(db, "postEvents"), {
-            Date: newDate,
-            Description: newDescription,
-            Location: newLocation,
-            Event_Link: newEventLink
+            date: newDate,
+            description: newDescription,
+            location: newLocation,
+            link: newEventLink
         });
         setNewDate('');
         setNewDescription('');
@@ -35,7 +35,7 @@ function PostEvent() {
         <div>
             <form onSubmit={uploadEvent} >
                 <label htmlFor="date"> Date</label>
-                <input onChange={(e) => setNewDate(e.target.value)} value={newDate} name='date' placeholder="Date">
+                <input type='date' onChange={(e) => setNewDate(e.target.value)} value={newDate} name='date' placeholder="Date">
                 </input>
                 <label htmlFor="description"> Description</label>
                 <input onChange={(e) => setNewDescription(e.target.value)} value={newDescription} name='description' placeholder="Description">
@@ -49,17 +49,17 @@ function PostEvent() {
                 <button type="submit">Post Event</button>
             </form>
 
-            <div className="event_body">
+            <div className="event_body mt-5" >
+                <h3>Upcomming Events</h3>
                 {eventList.map((event) => {
                     return (
 
                         <li key={event.id}>
-
-                            {event.Description}
+                            {event.description}
                         </li>
-
                     );
                 })}
+                <br />
             </div>
         </div>
     );
