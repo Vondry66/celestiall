@@ -15,9 +15,9 @@ const Home = () => {
         <>
             <Card p-4> <PhotoCarousel /></Card>
             <Card >
+                <Card.Title> {picture.title}</Card.Title>
                 <Card.Img variant="top" src={picture.hdurl} />
                 <Card.Body>
-                    <Card.Title> {picture.title}</Card.Title>
                     <Card.Text>
                         {picture.explanation}
                     </Card.Text>

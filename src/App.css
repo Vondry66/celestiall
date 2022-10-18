@@ -6,7 +6,7 @@
 .App {
   text-align: center;
   color: black;
-  background-color: #eef0f5;
+  background-color: black;
 }
 .articleimg{
   width: 300px;
@@ -82,4 +82,14 @@
   height:300px ;
   width: 300px;
 }
- 
+
+.me-auto .nav-link {
+  color:white;
+  font-family: 'Orbitron', sans-serif;
+  
+}
+#welcome {
+  color:white;
+  font-family: 'Orbitron', sans-serif;
+  padding: 20px;
+}
