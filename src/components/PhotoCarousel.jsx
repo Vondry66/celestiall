@@ -1,12 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
 function PhotoCarousel() {
     return (
-        <Container className=''>
-
-
-            <Carousel >
+        <Container  >
+            <Carousel className='w-50' >
                 <Carousel.Item interval={1000}>
                     <img
                         className="d-block w-100"
@@ -15,10 +12,10 @@ function PhotoCarousel() {
                     />
                     <Carousel.Caption>
                         <h3>Floating over the Bahamas</h3>
-                        <p>Nasa</p>
+                        <p>NASA</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={500}>
+                <Carousel.Item interval={1000}>
                     <img
                         className="d-block w-100"
                         src="https://assets2.cbsnewsstatic.com/hub/i/r/2021/08/02/22239e13-7216-46fd-a1f2-489e44a1a0fe/thumbnail/1240x1388/c75c4e51ac3f11d533fa13351e45361d/jupitersouthernhemisphere.jpg"
@@ -26,7 +23,7 @@ function PhotoCarousel() {
                     />
                     <Carousel.Caption>
                         <h3>Kaleidoscopic gasses</h3>
-                        <p>Nasa</p>
+                        <p>NASA</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -37,9 +34,7 @@ function PhotoCarousel() {
                     />
                     <Carousel.Caption>
                         <h3>Pillars of Creation</h3>
-                        <p>
-                            Nasa
-                        </p>
+                        <p>NASA </p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
