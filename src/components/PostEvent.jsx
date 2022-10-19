@@ -124,7 +124,7 @@ function PostEvent() {
                                 <tbody >
                                     <tr className="text-white " key={event.id}>
                                         <td className="text-white " >{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
-                                        <td className="text-white " >{event.description}   {' '}<Badge bg="secondary">New</Badge></td>
+                                        <td className="text-white " >{event.description}   {' '}<Badge bg="primary">New</Badge></td>
                                         <td className="text-white " >{event.location}</td>
                                         <td className="text-white " ><Button variant="outline-secondary"><Link className="text-white" to={`/events/${event.id}`}>View Event
                                         </Link></Button></td>
