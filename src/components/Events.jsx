@@ -26,7 +26,7 @@ const Events = () => {
         <>
             <PostEvent />
             <Container>
-                <Table className="text-white p-3" responsive>
+                <Table className="p-3" responsive striped hover variant="dark">
 
                     <thead>
                         <h3>Past Events</h3>

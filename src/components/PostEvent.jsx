@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { db } from "../firebase-config";
-import { addDoc, query, collection, onSnapshot, auth } from "firebase/firestore";
+import { db, auth } from "../firebase-config";
+import { addDoc, query, collection, onSnapshot } from "firebase/firestore";
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,8 +9,11 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
+import { UserAuth } from "../contexts/AuthContext";
+
 
 function PostEvent() {
+    const { user } = UserAuth();
     const [newDate, setNewDate] = useState([]);
     const [newDescription, setNewDescription] = useState([]);
     const [newLocation, setNewLocation] = useState([]);
@@ -45,10 +48,11 @@ function PostEvent() {
     });
     return (
         <div>
+
             <>
-                <Button variant="primary" onClick={handleShow}>
+                {user?.displayName ? <Button variant="primary" onClick={handleShow}>
                     Post an Event
-                </Button>
+                </Button> : ''}
 
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
@@ -103,10 +107,10 @@ function PostEvent() {
                 </Modal>
             </>
             <Container>
-                <Table className="text-white p-3" variant="dark" responsive>
+                <Table className=" p-3" striped hover variant="dark" responsive>
 
                     <thead>
-                        <h3>Upcomming Events</h3>
+                        <h3>Upcoming Events</h3>
                         <tr>
                             <th>Date</th>
                             <th>Event</th>
