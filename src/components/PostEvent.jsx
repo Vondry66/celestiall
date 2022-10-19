@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "../firebase-config";
-import { addDoc, query, collection, onSnapshot } from "firebase/firestore";
+import { addDoc, query, collection, onSnapshot, auth } from "firebase/firestore";
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
