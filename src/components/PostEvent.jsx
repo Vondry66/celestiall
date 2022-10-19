@@ -5,7 +5,10 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-
+import { Link } from "react-router-dom";
+import moment from "moment";
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 
 function PostEvent() {
     const [newDate, setNewDate] = useState([]);
@@ -52,7 +55,7 @@ function PostEvent() {
                         <Modal.Title>Enter the event details</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={uploadEvent}>
                             <Form.Group className="mb-3" controlId="date">
                                 <Form.Label>Date</Form.Label>
                                 <Form.Control
@@ -99,21 +102,37 @@ function PostEvent() {
                     </Modal.Footer>
                 </Modal>
             </>
+            <Container>
+                <Table className="text-white p-3" variant="dark" responsive>
 
-            <div className="event_body mt-5" >
+                    <thead>
+                        <h3>Upcomming Events</h3>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                            <th>Event Link</th>
+                        </tr>
+                    </thead>
+                    {
+                        eventList.map((event) => {
+                            return (
+                                <tbody >
+                                    <tr className="text-white " key={event.id}>
+                                        <td className="text-white " >{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
+                                        <td className="text-white " >{event.description}   {' '}<Badge bg="secondary">New</Badge></td>
+                                        <td className="text-white " >{event.location}</td>
+                                        <td className="text-white " ><Button variant="outline-secondary"><Link className="text-white" to={`/events/${event.id}`}>View Event
+                                        </Link></Button></td>
+                                    </tr>
+                                </tbody>
+                            );
+                        })
+                    }
+                </Table>
+            </Container>
 
-                <h3>Upcomming Events  </h3>
-                {eventList.map((event) => {
-                    return (
 
-                        <li key={event.id}>
-                            {event.description}
-                            {' '}<Badge bg="secondary">New</Badge>
-                        </li>
-                    );
-                })}
-                <br />
-            </div>
         </div>
     );
 
