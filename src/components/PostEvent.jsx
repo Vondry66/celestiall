@@ -1,7 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { db } from "../firebase-config";
-import { addDoc, query, collection, getDocs, doc, onSnapshot } from "firebase/firestore";
-
+import { addDoc, query, collection, onSnapshot, auth } from "firebase/firestore";
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
+import moment from "moment";
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 
 function PostEvent() {
     const [newDate, setNewDate] = useState([]);
@@ -9,14 +16,19 @@ function PostEvent() {
     const [newLocation, setNewLocation] = useState([]);
     const [newEventLink, setNewEventLink] = useState([]);
     const [eventList, setEventList] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const uploadEvent = async (e) => {
         e.preventDefault();
         await addDoc(collection(db, "postEvents"), {
-            Date: newDate,
-            Description: newDescription,
-            Location: newLocation,
-            Event_Link: newEventLink
+            date: newDate,
+            description: newDescription,
+            location: newLocation,
+            link: newEventLink
         });
         setNewDate('');
         setNewDescription('');
@@ -33,34 +45,94 @@ function PostEvent() {
     });
     return (
         <div>
-            <form onSubmit={uploadEvent} >
-                <label htmlFor="date"> Date</label>
-                <input onChange={(e) => setNewDate(e.target.value)} value={newDate} name='date' placeholder="Date">
-                </input>
-                <label htmlFor="description"> Description</label>
-                <input onChange={(e) => setNewDescription(e.target.value)} value={newDescription} name='description' placeholder="Description">
-                </input>
-                <label htmlFor="location"> Location</label>
-                <input onChange={(e) => setNewLocation(e.target.value)} value={newLocation} name='location' placeholder="Location">
-                </input>
-                <label htmlFor="eventLink"> Event Link</label>
-                <input onChange={(e) => setNewEventLink(e.target.value)} value={newEventLink} name='eventLink' placeholder="Event Link">
-                </input>
-                <button type="submit">Post Event</button>
-            </form>
+            <>
+                <Button variant="primary" onClick={handleShow}>
+                    Post an Event
+                </Button>
 
-            <div className="event_body">
-                {eventList.map((event) => {
-                    return (
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Enter the event details</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={uploadEvent}>
+                            <Form.Group className="mb-3" controlId="date">
+                                <Form.Label>Date</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    autoFocus
+                                    name='date'
+                                    onChange={(e) => setNewDate(e.target.value)} value={newDate}
+                                />
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="description"
+                            >
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control as="textarea" rows={3}
+                                    onChange={(e) => setNewDescription(e.target.value)} value={newDescription} placeholder="Description of the Event"
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="location">
+                                <Form.Label>Location</Form.Label>
+                                <Form.Control
+                                    onChange={(e) => setNewLocation(e.target.value)} value={newLocation}
+                                    placeholder="Location"
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="eventLink">
+                                <Form.Label>Event Link</Form.Label>
+                                <Form.Control
+                                    onChange={(e) => setNewEventLink(e.target.value)} value={newEventLink}
+                                    placeholder="Event Link"
+                                />
+                            </Form.Group>
+                            <Button variant="primary" type="submit">
+                                Post Event
+                            </Button>
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary"
+                            onClick={handleClose}>
+                            Close
+                        </Button>
 
-                        <li key={event.id}>
+                    </Modal.Footer>
+                </Modal>
+            </>
+            <Container>
+                <Table className="text-white p-3" variant="dark" responsive>
 
-                            {event.Description}
-                        </li>
+                    <thead>
+                        <h3>Upcomming Events</h3>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                            <th>Event Link</th>
+                        </tr>
+                    </thead>
+                    {
+                        eventList.map((event) => {
+                            return (
+                                <tbody >
+                                    <tr className="text-white " key={event.id}>
+                                        <td className="text-white " >{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
+                                        <td className="text-white " >{event.description}   {' '}<Badge bg="secondary">New</Badge></td>
+                                        <td className="text-white " >{event.location}</td>
+                                        <td className="text-white " ><Button variant="outline-secondary"><Link className="text-white" to={`/events/${event.id}`}>View Event
+                                        </Link></Button></td>
+                                    </tr>
+                                </tbody>
+                            );
+                        })
+                    }
+                </Table>
+            </Container>
 
-                    );
-                })}
-            </div>
+
         </div>
     );
 

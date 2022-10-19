@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 // import { db } from "../firebase-config";
 import { getEvents } from "../utils/api";
 import PostEvent from "./PostEvent";
+import { Container } from "react-bootstrap";
 
 
 
@@ -24,31 +25,35 @@ const Events = () => {
     return (
         <>
             <PostEvent />
-            <Table style={{ color: "white" }} striped responsive>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Event</th>
-                        <th>Location</th>
-                        <th>Event Link</th>
-                    </tr>
-                </thead>
-                {
-                    events.map((event) => {
-                        return (
-                            <tbody style={{ color: "white" }} >
-                                <tr style={{ color: "white" }} key={event.id}>
-                                    <td>{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
-                                    <td>{event.name}</td>
-                                    <td>{event.location}</td>
-                                    <td><Button variant="outline-primary"><Link to={`/events/${event.id}`}>View Event
-                                    </Link></Button></td>
-                                </tr>
-                            </tbody>
-                        );
-                    })
-                }
-            </Table>
+            <Container>
+                <Table className="text-white p-3" responsive>
+
+                    <thead>
+                        <h3>Past Events</h3>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                            <th>Event Link</th>
+                        </tr>
+                    </thead>
+                    {
+                        events.map((event) => {
+                            return (
+                                <tbody >
+                                    <tr className="text-white " key={event.id}>
+                                        <td className="text-white " >{moment(event.date).format("dddd, MMMM Do YYYY")}</td>
+                                        <td className="text-white " >{event.name}</td>
+                                        <td className="text-white " >{event.location}</td>
+                                        <td className="text-white " ><Button variant="outline-secondary"><Link className="text-white" to={`/events/${event.id}`}>View Event
+                                        </Link></Button></td>
+                                    </tr>
+                                </tbody>
+                            );
+                        })
+                    }
+                </Table>
+            </Container>
         </>
     );
 };

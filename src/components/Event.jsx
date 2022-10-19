@@ -18,14 +18,14 @@ const Event = () => {
 
     return (
         <>
-            <Container className="bg">
-                <Card className="p-2 bg">
-                    <Card.Header as="h5">event.name</Card.Header>
+            <Container className="dark">
+                <Card className="p-4 bg-black">
+                    <Card.Header as="h5">{event.name}</Card.Header>
                     <Card.Text>{moment(event.date).format("dddd, MMMM Do YYYY")}</Card.Text>
                     <Card.Text>{event.location}</Card.Text>
-                    <Card.Img src={event.feature_image} width='12rem' rounded />
+                    <Card.Img className='p-4 bg-black' src={event.feature_image} width='19rem' />
                     <Card.Body>{event.description}</Card.Body>
-                    <ReactPlayer url={event.video_url} width="100%" className={"p-4"} />
+                    <ReactPlayer url={event.video_url} width="100%" />
                 </Card>
             </Container>
         </>
