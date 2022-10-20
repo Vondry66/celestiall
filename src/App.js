@@ -10,7 +10,7 @@ import SignIn from "./components/SignIn";
 import Chat from "./components/Chat";
 import Events from "./components/Events";
 import Event from "./components/Event";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,14 +21,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
 
-            <Route path="/events" element={< Events />} />
-            <Route path="/events/:id" element={< Event />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<Event />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/photos" element={<Photos />} />
             <Route path="/skymap" element={<Skymap />} />
             <Route path="/news" element={<News />} />
             <Route path="/chat" element={<Chat />} />
           </Routes>
+          <Footer />
         </div>
       </BrowserRouter>
     </AuthContextProvider>

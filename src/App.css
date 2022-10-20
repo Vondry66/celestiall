@@ -162,7 +162,9 @@ right: 50px;
   font-size: calc(10px + 2vmin);
   color: rgb(255, 255, 255);
 }
-
+.footer{
+  height: 350px;
+}
 .App-link {
   color: #61dafb;
 }
