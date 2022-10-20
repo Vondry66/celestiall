@@ -19,7 +19,7 @@ const Event = () => {
     return (
         <>
             <Container className="dark">
-                <Card className="p-4 bg-black">
+                <Card className="p-4 bg-black text-white">
                     <Card.Header as="h5">{event.name}</Card.Header>
                     <Card.Text>{moment(event.date).format("dddd, MMMM Do YYYY")}</Card.Text>
                     <Card.Text>{event.location}</Card.Text>
